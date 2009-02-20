@@ -1,4 +1,4 @@
-#summary Here are some notes on installing Pygame
+#summary My rough notes on installing Pygame
 
 = For Image Manipulation Only =
 
