@@ -2,7 +2,7 @@
 
 = For Image Manipulation Only =
 
-For now I only want to use the image ops in Pygame with PNGs (this is for {http://code.google.com/p/gheat/ gheat})
+For now I only want to use the image ops in Pygame with PNGs (this is for [http://code.google.com/p/gheat/ gheat])
   
   * libX11 (e.g., from [ftp://ftp.freebsd.org/pub/FreeBSD/ports/i386/packages-6-stable/x11/ ports])
   * [http://www.libpng.org/pub/png/libpng.html libpng] (source is straightforward dance; well, libtool 2.2 died for me on production box so I had to install [http://www.gnu.org/software/libtool/ libtool 2.2.2] and then link it in the libpng src dir after running ./configure)
@@ -59,7 +59,7 @@ Ugh. 1.8 has buggy PNG saving; need the changes in [http://www.seul.org/viewcvs/
 
 Ugly X dependency problems on production box. Worked: installed [http://www.freebsd.org/cgi/cvsweb.cgi/ports/devel/sdl12/ sdl] as a [ftp://ftp.freebsd.org/pub/FreeBSD/ports/i386/packages-6-stable/devel/ package] ... but not until after I [http://www.onlamp.com/pub/a/bsd/2001/11/29/Big_Scary_Daemons.html cleaned up ports/pkgs].
 
-@ Standalone Install
+= Standalone Install =
 
 I wanted to install SDL/Pygame in a sandbox, not globally. The system I was on already had X11 and libpng, so I was starting with SDL/SDL_image. I installed these using `./configure --prefix=`. Here's a helpful message from SDL_image:
 
