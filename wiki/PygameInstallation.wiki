@@ -3,13 +3,13 @@
 = For Image Manipulation Only =
 
 For now I only want to use the image ops in Pygame with PNGs (this is for {http://code.google.com/p/gheat/ gheat})
+  
+  * libX11 (e.g., from [ftp://ftp.freebsd.org/pub/FreeBSD/ports/i386/packages-6-stable/x11/ ports])
+  * [http://www.libpng.org/pub/png/libpng.html libpng] (source is straightforward dance; well, libtool 2.2 died for me on production box so I had to install [http://www.gnu.org/software/libtool/ libtool 2.2.2] and then link it in the libpng src dir after running ./configure)
+  * [http://www.libsdl.org/ SDL] (straightforward)
+  * [http://www.libsdl.org/projects/SDL_image/ SDL_image] (almost straightforward; need to first `export CPPFLAGS=-I/usr/local/include` to pick up png.h)
 
-* libX11 (e.g., from {ftp://ftp.freebsd.org/pub/FreeBSD/ports/i386/packages-6-stable/x11/ ports})
-* {http://www.libpng.org/pub/png/libpng.html libpng} (source is straightforward dance; well, libtool 2.2 died for me on production box so I had to install {http://www.gnu.org/software/libtool/ libtool 2.2.2} and then link it in the libpng src dir after running ./configure)
-* {http://www.libsdl.org/ SDL} (straightforward)
-* {http://www.libsdl.org/projects/SDL_image/ SDL_image} (almost straightforward; need to first `export CPPFLAGS=-I/usr/local/include` to pick up png.h)
-
-Install those four deps, then download and unpack {http://pygame.org/ pygame} and run:
+Install those four deps, then download and unpack [http://pygame.org/ pygame] and run:
 
 {{{
 python setup.py build
@@ -45,7 +45,7 @@ will not run. Would you like to continue the configuration? [Y/n]:
 
 Go ahead and proceed. It will then probably die for one reason or another (first pass for me was because no X11; second pass once /usr/local/include was on header search path was because PNG/JPEG/SCRAP were found when we didn't want them--we don't want them because we are using SDL's built-in PNG/JPEG support and we don't know what SCRAP is and it was breaking). So then edit Setup and comment out the PNG, JPEG, SCRAP, scrap, display, and event lines. Then rerun setup.py build and then install.
 
-You need to tweak the environment (per {http://www.pygame.org/wiki/HeadlessNoWindowsNeeded this example}):
+You need to tweak the environment (per [http://www.pygame.org/wiki/HeadlessNoWindowsNeeded this example]):
 
 {{{
 os.environ['SDL_VIDEODRIVER'] = 'dummy'
@@ -53,11 +53,11 @@ os.environ['SDL_VIDEODRIVER'] = 'dummy'
 
 And then you can use (parts of) pygame!
 
-Also need {http://numpy.scipy.org/ NumPy} for pixel access. This can be installed at any time, although for version 1.0.4 you'll need to apply {http://scipy.org/scipy/numpy/ticket/618 this patch} before installing on FreeBSD. ({http://archives.seul.org/pygame/users/Aug-2007/msg00334.html re: PixelArray vs. surfarray})
+Also need [http://numpy.scipy.org/ NumPy] for pixel access. This can be installed at any time, although for version 1.0.4 you'll need to apply [http://scipy.org/scipy/numpy/ticket/618 this patch] before installing on FreeBSD. ([http://archives.seul.org/pygame/users/Aug-2007/msg00334.html re: PixelArray vs. surfarray])
 
-Ugh. 1.8 has buggy PNG saving; need the changes in {http://www.seul.org/viewcvs/viewcvs.cgi?rev=1205&root=PyGame&view=rev this rev}. I just used trunk. This is fixed in 1.8.1
+Ugh. 1.8 has buggy PNG saving; need the changes in [http://www.seul.org/viewcvs/viewcvs.cgi?rev=1205&root=PyGame&view=rev this rev]. I just used trunk. This is fixed in 1.8.1
 
-Ugly X dependency problems on production box. Worked: installed {http://www.freebsd.org/cgi/cvsweb.cgi/ports/devel/sdl12/ sdl} as a {ftp://ftp.freebsd.org/pub/FreeBSD/ports/i386/packages-6-stable/devel/ package} ... but not until after I {http://www.onlamp.com/pub/a/bsd/2001/11/29/Big_Scary_Daemons.html cleaned up ports/pkgs}.
+Ugly X dependency problems on production box. Worked: installed [http://www.freebsd.org/cgi/cvsweb.cgi/ports/devel/sdl12/ sdl] as a [ftp://ftp.freebsd.org/pub/FreeBSD/ports/i386/packages-6-stable/devel/ package] ... but not until after I [http://www.onlamp.com/pub/a/bsd/2001/11/29/Big_Scary_Daemons.html cleaned up ports/pkgs].
 
 @ Standalone Install
 
